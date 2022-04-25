@@ -1,4 +1,5 @@
 import React from 'react';
+// import useHistory from "react-router-dom";
 import { signUpWithGoogle, createUserWithEmail } from '../database/firebase';
 import './SignUp.css';
 import google from "../assests/img/google.png"
@@ -9,6 +10,8 @@ import logo from "../assests/img/logo.png"
 // };
 
 function SignUp (){
+// const history = useHistory();
+
 const signUpWithEmailAndPassword = () => {
   let username = document.getElementById('inputUsername').value;
   let email = document.getElementById('inputEmail').value;
@@ -16,9 +19,11 @@ const signUpWithEmailAndPassword = () => {
 createUserWithEmail(email, password, username).then((userCredential) => {
   if (userCredential) {
     alert ('creaste cuenta');
+    // history.push('/notes')
   } 
 });
 }
+
     return(
         <React.Fragment>
         <h1 id='yourNotes'><img id='logo' src={logo}></img> {'\n'} Your notes</h1>
@@ -54,4 +59,4 @@ createUserWithEmail(email, password, username).then((userCredential) => {
     );
 }
 
-export { SignUp };
+export default SignUp;

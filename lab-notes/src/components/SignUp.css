@@ -74,13 +74,13 @@ body {
     margin-left: 5%;
 }
 
-#inputUsername::placeholder {
+/* #inputUsername::placeholder {
     background: url("../assests/img/usuaria.png");
     background-size: 17px;
     background-repeat: no-repeat;
     background-position: 43px 0px;
     color: rgba(0, 0, 0, 0.79);
-}
+} */
 
 #inputEmail::placeholder {
     background: url("../assests/img/email.png");

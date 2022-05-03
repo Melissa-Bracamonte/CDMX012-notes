@@ -1,0 +1,155 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+}
+  
+body {
+    display: flex;
+    justify-content: center;
+    background-image: url("../assests/img/fondo.jpg");
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+}
+
+#logo{
+  width: 60%;
+  height: 95px;
+  margin-left: -45%;
+}
+
+#yourNotes {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-weight: bold; 
+  font-style: italic;
+  margin: 2% 0% 0% 4%;
+  font-size: 340%;
+}
+
+#slogan{
+  display: flex;
+  flex-direction: column;
+  font-weight: bold; 
+  font-style: italic;
+  margin-top: 5%;
+  font-size: 130%;
+}
+
+#sloganPartOne{
+  text-align: center;
+  margin-left: 12%;
+}
+
+#sloganPartTwo{
+  text-align: center;
+  margin-left: 0%;
+}
+
+#signUp{
+  font-weight: bold;
+  font-size: 120%;
+  margin: 5% 0% 0% 43%;
+}
+
+#signupAndInputs{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 5%;
+}
+
+.inputSignUp {
+  background-color: #D8D6D6;
+  text-align: center;
+  border-radius: 10px;
+  width: 100%;
+  height: 48px;
+  border: 2px;
+  font-weight: bold;
+  font-size: 100%;
+  transition: 0.5s;
+  outline: none;
+  margin-left: 5%;
+}
+
+#inputEmail::placeholder {
+  background: url("../assests/img/email.png");
+  background-size: 17px;
+  background-repeat: no-repeat;
+  background-position: 43px 0px;
+  color: rgba(0, 0, 0, 0.79);
+}
+
+#inputPassword::placeholder {
+  background: url("../assests/img/lock.png");
+  background-size: 43px;
+  background-repeat: no-repeat;
+  background-position: 32px 0px;
+  color: rgba(0, 0, 0, 0.79);
+}
+
+#buttonContinue{
+  background-color: #FDCB9A;
+  font-weight: bold;
+  font-size: 100%;
+  width: 150px;
+  height: 40px;
+  border-color: #FDCB9A;
+  border: 2px;
+  border-radius: 20px;
+  margin: 3% 0% 0% 30%;
+  cursor: pointer;
+}
+
+#or{
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+}
+
+#orGoogle{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 5% 0% 0% 0%;
+}
+
+#loginGoogle{
+    display: flex;
+    border: none;
+    justify-content: center;
+    background: none;
+}
+
+#logoGoogleLogin{
+  width: 13%;
+  height: 40px;
+  padding-right: 5%;
+  padding: 0px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  cursor: pointer;
+
+}
+
+#signupHere{
+  display: flex;
+  flex-direction: column;
+  margin-top: 10%;
+  font-size: 100%;
+}
+
+#signupHereOne{
+  text-align: center;
+  margin-left: 12%;
+}
+
+#signupHereTwo{
+  text-align: center;
+  margin-left: 10%;
+  font-weight: bold; 
+  cursor: pointer;
+  /* text-shadow: .5px .5px #9e9e9e; */
+}

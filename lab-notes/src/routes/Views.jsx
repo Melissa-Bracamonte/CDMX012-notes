@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Login from "../components/Login";
 import SignUp from "../components/SignUp";
 import Notes from "../components/Notes";
@@ -7,22 +7,28 @@ import NotFound from "../components/NotFound";
 import {
     Routes, Route
 } from "react-router-dom";
+import RequireAuth from '../components/RequireAuth';
+// import { UserContext } from '../database/UserProvider';
 
 const Views = () => {
+    // const {user} = useContext(UserContext)
+    // if (user === false){
+    //     return <p>Loading...</p>
+    // }
+
+    // const { user } = useContext(UserContext);
+
     return (
         <Routes>
-                {/* <Route path='/notes' >
-                    <ProtectedRoute>
-                    <Notes />
-                    </ProtectedRoute>
-                </Route> */}
                 <Route exact path='/' element={<Login />}/>
                 <Route exact path='/signup' element={<SignUp />}/>
-                <Route exact path='/notes' element={<Notes />}/>
+                <Route exact path='/notes' element={
+                    <RequireAuth>
+                        <Notes/>
+                        {/* <Notes emailUser={user}/> */}
+                    </RequireAuth>
+                }/>
                 <Route path='*' element={<NotFound />}/>
-                {/* <Route path='/' >
-                    <Home />
-                </Route> */}
         </Routes>
     )
   }

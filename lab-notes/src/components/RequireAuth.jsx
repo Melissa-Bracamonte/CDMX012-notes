@@ -6,6 +6,9 @@ import { UserContext } from "../database/UserProvider";
 const RequireAuth = ({children}) => {
     const {user} = useContext(UserContext);
 
+    // if(!user){
+    //     return <Navigate to ='/'/>
+    // }
     if(user){
         return <Navigate to ='/notes'/>
     }

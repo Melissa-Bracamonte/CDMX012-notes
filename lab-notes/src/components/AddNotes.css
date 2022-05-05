@@ -1,0 +1,133 @@
+/* MODAL */
+body.active-modal {
+    overflow-y: hidden;
+}
+
+.modal, .overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.overlay {
+    background: rgba(49,49,49,0.8);
+}
+.modal-content {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: #F97C39;
+    padding: 14px 28px;
+    border-radius: 3px;
+    max-width: 600px;
+    min-width: 300px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 7px;
+    background: none;
+    border: none;
+}
+
+.btnclose{
+    width: 90%;
+    height: 18px;
+}
+/* Aquí terminó el modal */
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* body {
+    display: flex;
+    background-image: url("../assests/img/fondo.jpg");
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+    overflow: scroll;
+} */
+
+#btnAddNote{
+    background: none;
+    border: none;
+}
+
+#btnAdd{
+
+    width: -10%;
+    height: 50px;
+}
+
+ul{
+    list-style: none
+}
+
+li{
+    display: flex;
+    flex-direction: column;
+    margin: 10%;
+    align-items: center;
+    justify-content: center;
+    background-color: #FA9965;
+}
+
+/* #sectionNotes{
+    display: flex;
+    flex-direction: column;
+    margin-top: -20%;
+    padding-top: 15%;
+} */
+
+/* #savingNotes{
+    width: 230px;
+  height: 45px;
+} */
+
+#textTitle{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    /* margin-top: 5%; */
+    /* overflow: hidden; */
+}
+
+#textNote{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    /* margin-top: 3%; */
+    
+}
+
+/* #btnDeleteAndEdit{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+} */
+
+.btnDelete{
+    background-color: antiquewhite;
+    border-color: antiquewhite;
+    margin-top: 2%;
+}
+
+.btnEdit{
+    background-color: antiquewhite;
+    border-color: antiquewhite;
+    margin-top: 10%;
+}

@@ -1,27 +1,70 @@
 * {
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
     font-family: "Roboto", sans-serif;
 }
 
-body{
-    margin: 0;
-    padding: 0;
+header{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10%;
+}
+
+/* body{
+    margin: 0px;
+    padding: 0px;
+} */
+
+#identity{
+    display: flex;
+    flex-direction: row;
+    margin-right: 50%;
 }
 
 #logoHome{
-    flex-direction: row;
-    width: 60%;
-    height: 95px;
-    margin: 0;
-    justify-content: right;
+    width: 45%;
+    height: 85px;
+}
+
+#nameAndSloganHome{
+    display: flex;
+    flex-direction: column;
 }
 
 #yourNotesHome{
-    display: flex;
-    text-align: center;
     font-weight: bold; 
     font-style: italic;
-    /* margin: 2% 0% 0% 4%; */
-    font-size: 200%;
+    font-size: 150%;
+    margin-right: 5%;
+}
+
+#sloganHome{
+    /* display: flex; */
+    flex-direction: column;
+    font-weight: bold; 
+    font-style: italic;
+    font-size: 100%;
+    color: rgba(0, 0, 0, 0.734);
+  }
+  
+  #sloganPartOneHome{
+    text-overflow: ellipsis;
+  white-space: nowrap;
+  }
+  
+  #sloganPartTwoHome{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+#buttonLogOut{
+    background: none;
+    border: none;
+    /* width: 50%;
+    height: 20px; */
+}
+
+#btnLogout{
+    width: -10%;
+    height: 50px;
 }

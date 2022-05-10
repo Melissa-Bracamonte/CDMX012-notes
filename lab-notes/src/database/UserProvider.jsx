@@ -7,12 +7,15 @@ import React from 'react';
 export const UserContext = createContext();
 
 const UserProvider = ({children}) => {
-    const [user, setUser] = useState(false);
+    const [user, setUser] = useState('');
+    // const [user, setUser] = useState(false);
 
     useEffect(() => {
-       const unsuscribe = onAuthStateChanged(auth, (user) => {
-           console.log(user);
-           window.user = user
+       const unsuscribe = onAuthStateChanged(auth, (userUid) => {
+           console.log(userUid);
+           setUser(userUid)
+        //    window.user = user
+           //return user
 
         });
       return () => unsuscribe();

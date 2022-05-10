@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { db, auth } from "../database/firebase-config";
 import {
   collection,
@@ -10,12 +10,14 @@ import {
   getDocs,
   query,
   where,
+  onSnapshot,
 } from "firebase/firestore";
 import add from "../assests/img/add.png";
 import close from "../assests/img/close.png";
 import editImg from "../assests/img/editImg.png";
 import deleteImg from "../assests/img/deleteImg.png";
 import "./AddNotes.css";
+import { UserContext } from '../database/UserProvider';
  
 const AddNotes = () => {
   const [notes, setNotes] = useState([]);
@@ -24,24 +26,49 @@ const AddNotes = () => {
   const [editNotes, setEditNotes] = useState(false);
   const [id, setId] = useState("");
   const [modal, setModal] = useState (false);
+  const {user} = useContext(UserContext);
   // const [uid, setUid] = useState("");
  
+  // useEffect(() => {
+  //  const getNotes = async () => {
+  //    try {
+  //   // const data = await getDocs(collection(db, "notes"), orderBy('date', 'desc'))
+  //   const userlogIn = auth.currentUser;
+  //     const userUid = userlogIn.uid;
+  //   const q = query(collection(db, "notes"), where("uid", "==", userUid));
+  //   const data = await getDocs(q)
+  //   const arrayData = data.docs.map(doc => ({id : doc.id, ...doc.data()}))
+  //   const newArrayData = arrayData.sort((a, b) => new Date(a.date) - new Date(b.date));
+  //    console.log(newArrayData);
+  //   setNotes(newArrayData);
+  //   } catch (error) {
+  //   console.log(error);
+  //   }
+  //   }
+  //   getNotes();
+  //   }, [])
+
   useEffect(() => {
-   const getNotes = async () => {
-     try {
-    // const data = await getDocs(collection(db, "notes"), orderBy('date', 'desc'))
-    const q = query(collection(db, "notes"), where("uid", "==", window.user.uid));
-    const data = await getDocs(q)
-    const arrayData = data.docs.map(doc => ({id : doc.id, ...doc.data()}))
-    const newArrayData = arrayData.sort((a, b) => new Date(a.date) - new Date(b.date));
-     console.log(newArrayData);
-    setNotes(newArrayData);
-    } catch (error) {
-    console.log(error);
-    }
-    }
-    getNotes();
-    }, [])
+    const getNotes = async () => {
+      try {
+     const q = query(collection(db, "notes"), where("uid", "==", user.uid));
+        onSnapshot(q, (querySnapshot) => {
+          let arrayData = [];
+          querySnapshot.docs.map(doc => {
+            arrayData.push({
+              id : doc.id, 
+              ...doc.data()
+            })
+            arrayData.sort((a, b) => new Date(a.date) - new Date(b.date));
+          })
+          setNotes(arrayData);
+        })
+     } catch (error) {
+     console.log(error);
+     }
+     }
+     getNotes();
+     }, [])
  
   const addReminder = async (e) => {
     e.preventDefault();
@@ -59,14 +86,16 @@ const AddNotes = () => {
         date: new Date(),
         uid: uid
       });
-      setNotes([...notes, { uid, title, id: data.id, ...newNote  }]);
+      // setNotes([...notes, { ...newNote, uid, title, id: data.id,   }]);
+      // setNewNote('');
     } catch (error) {
       console.log(error);
     }
  
     console.log(newNote);
     console.log(title);
-    window.location.reload();
+    // window.location.reload();
+
   };
  
   const remove = async (id) => {

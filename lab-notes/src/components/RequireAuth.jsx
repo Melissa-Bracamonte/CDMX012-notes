@@ -4,11 +4,11 @@
 
 
 // const RequireAuth = ({children}) => {
-//  const {user} = useContext(UserContext);
+//   const {user} = useContext(UserContext);
 
-//     if(user){
-//       return <Navigate to ='/notes'/>
-//     }
-//        return children;
-// }
-// export default RequireAuth;
+//      if(user){
+//        return <Navigate to ='/notes'/>
+//      }
+//         return children;
+//  }
+//  export default RequireAuth;

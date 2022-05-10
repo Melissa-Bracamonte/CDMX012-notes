@@ -33,6 +33,7 @@ function Notes(){
         </div>
         </section>
         </section>
+        
         <br/>
             <button type= 'submit' id='buttonLogOut' onClick={handleClickLogout}>
             <img id='btnLogout' src={logout}></img>

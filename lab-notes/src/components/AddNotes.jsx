@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { db } from "../database/firebase-config";
+import { db, auth } from "../database/firebase-config";
 import {
   collection,
   addDoc,
   doc,
   deleteDoc,
   updateDoc,
-  query,
   orderBy,
-  onSnapshot,
   getDocs,
+  query,
+  where,
 } from "firebase/firestore";
 import add from "../assests/img/add.png";
 import close from "../assests/img/close.png";
+import editImg from "../assests/img/editImg.png";
+import deleteImg from "../assests/img/deleteImg.png";
 import "./AddNotes.css";
-// import { async } from "@firebase/util";
-
+ 
 const AddNotes = () => {
   const [notes, setNotes] = useState([]);
   const [title, setTitle] = useState("");
@@ -23,70 +24,25 @@ const AddNotes = () => {
   const [editNotes, setEditNotes] = useState(false);
   const [id, setId] = useState("");
   const [modal, setModal] = useState (false);
-
+  // const [uid, setUid] = useState("");
+ 
   useEffect(() => {
    const getNotes = async () => {
      try {
-    const data = await getDocs(collection(db, "notes"), orderBy('date', 'desc'))
+    // const data = await getDocs(collection(db, "notes"), orderBy('date', 'desc'))
+    const q = query(collection(db, "notes"), where("uid", "==", window.user.uid));
+    const data = await getDocs(q)
     const arrayData = data.docs.map(doc => ({id : doc.id, ...doc.data()}))
-    console.log(arrayData);
-    setNotes(arrayData)
+    const newArrayData = arrayData.sort((a, b) => new Date(a.date) - new Date(b.date));
+     console.log(newArrayData);
+    setNotes(newArrayData);
     } catch (error) {
-    console.log(error)
+    console.log(error);
     }
     }
-    getNotes()
+    getNotes();
     }, [])
-
-// useEffect(() => {
-// const getNotes = async () => {
-// try {
-// const data = await onSnapshot(collection(db, "notes"))
-// const arrayData = data.docs.map(doc => ({id : doc.id, ...doc.data()}))
-// console.log(arrayData);
-// setNotes(arrayData)
-// } catch (error) {
-// console.log(error)
-// }
-// }
-// getNotes()
-// }, [])
-
-  // useEffect(() => {
-  //  const getData = query(collection(db, "notes"), orderBy("created", "desc"));
-  //  onSnapshot(getData, (querySnapshot) => {
-  //  setNotes(
-  //    querySnapshot.notes.map((notes) => ({
-  //     id: doc.id,
-  //     data: doc.data(),
-  //     }))
-  //    );
-  //  });
-  // }, []);
-
-  // React.useEffect(() => {
-  //   const getNotes = async () => {
-  //     try {
-  //    const getData = query(collection(db, "notes"), orderBy("created", "desc"));
-  //    onSnapshot(getData, (querySnapshot) => {
-  //   const arrayData = querySnapshot.notes.map((notes) => ({
-  //     id: doc.id,
-  //     data: doc.data(),
-  //     }))
-  //    setNotes(
-  //     arrayData
-  //     //  querySnapshot.notes.map((notes) => ({
-  //     //   id: doc.id,
-  //     //   data: doc.data(),
-  //     //   }))
-  //      );
-  //     });
-  //   } catch (error){
-  //   }
-  //   }
-  //   getNotes()
-  //   }, []);
-
+ 
   const addReminder = async (e) => {
     e.preventDefault();
     if (!newNote.trim() || !title.trim()) {
@@ -94,21 +50,25 @@ const AddNotes = () => {
       return;
     }
     try {
+      const userlogin = auth.currentUser;
+      const uid = userlogin.uid;
+      // setUid(uid);
       const data = await addDoc(collection(db, "notes"), {
         Titulo: title,
         Descripción: newNote,
         date: new Date(),
+        uid: uid
       });
-      setNotes([...notes, { title, id: data.id, ...newNote  }]);
+      setNotes([...notes, { uid, title, id: data.id, ...newNote  }]);
     } catch (error) {
       console.log(error);
     }
-
+ 
     console.log(newNote);
     console.log(title);
     window.location.reload();
   };
-
+ 
   const remove = async (id) => {
     try{
       await deleteDoc(doc(db, 'notes', id));
@@ -119,14 +79,7 @@ const AddNotes = () => {
       console.log(error);
     }
   };
-
-  // const activateEditing = (item) => {
-  //   setEditNotes(true);
-  //   setNewNote(item.Descripción);
-  //   setTitle(item.Titulo);
-  //   setId(item.id);
-  // };
-
+ 
   const activateEditing = (item) => {
     setEditNotes(true);
     setNewNote(item.Descripción);
@@ -134,7 +87,7 @@ const AddNotes = () => {
     setId(item.id);
     setModal(!modal)
   };
-
+ 
   const edit = async (e) => {
     e.preventDefault();
     if (!newNote.trim() || !title.trim()) {
@@ -155,32 +108,43 @@ const AddNotes = () => {
       setNewNote('')
       setTitle('')
       setId('')
-      alert ('nota editada');
+      // alert ('nota editada');
     } catch (error){
       console.log(error);
     }
     //  window.location.reload();
   };
-
+ 
   const toggleModal = () => {
     setModal(!modal);
   };
-
+ 
   if (modal) {
     document.body.classList.add("active-modal");
   } else {
     document.body.classList.remove("active-modal");
   }
-
-
+ 
+  // const containsUser = id.includes(uid);
+  // const containsUser = newNote.includes(uid);
+ 
+ 
   return (
     <React.Fragment>
+      {!modal && (
+        <form onSubmit={editNotes ? edit : addReminder}>
+          <button id="btnAddNote"  onClick={toggleModal}>
+          <img id="btnAdd" src={add}></img>
+          </button>
+        </form>
+      )}
+ 
       {modal && (
         <section className="modal">
           <section className="overlay"></section>
           <section className="modal-content">
             <h2>{editNotes ? "Edit note" : "Add note"}</h2>
-
+ 
             <form onSubmit={editNotes ? edit : addReminder}>
               <button className="close-modal" onClick={toggleModal}>
               <img className="btnclose" src={close}></img>
@@ -209,52 +173,43 @@ const AddNotes = () => {
           </section>
         </section>
       )}
-
-      {!modal && (
-        <form onSubmit={editNotes ? edit : addReminder}>
-          <button id="btnAddNote"  onClick={toggleModal}>
-          <img id="btnAdd" src={add}></img>
-          </button>
-        </form>
-      )}
-
+ 
+{/* {containsUser && */}
       <div className="globalContainerNotes">
         <div className="rowNotes">
           <div className="containerNotes">
             <ul className="listGroup">
               {notes.map((item) => (
                 <li className="listGroupItem" key={item.id}>
-                  {/* <div id="sectionNotes"> */}
-                  {/* <div id="savingNotes"> */}
-                  <h3>{item.Titulo}</h3>
-                  <p>{item.Descripción}</p>
-                  {/* </div> */}
-                  {/* <div id="btnDeleteAndEdit"> */}
+                  <section id="btnDeleteAndEdit">
                   <button
-                    className="btnDelete"
+                    className="deleteAndEdit"
                     onClick={() => remove(item.id)}
                   >
-                    Delete
+                    <img className="imgDelete" src={deleteImg}></img>
                   </button>
-
+ 
                   {!modal && (
                     <form onSubmit={toggleModal}>
                       <button
-                        className="btnEdit"
+                        className="deleteAndEdit"
                         onClick={() => activateEditing(item)}
                       >
-                        Edit
+                        <img className="imgEdit" src={editImg}></img>
                       </button>
                     </form>
                   )}
-                    {/* </div> */}
-                  {/* </div> */}
+                  </section>
+ 
+                  <h3>{item.Titulo}</h3>
+                  <p id="h3Note">{item.Descripción}</p>
                 </li>
               ))}
             </ul>
           </div>
         </div>
       </div>
+        {/* } */}
     </React.Fragment>
   );
 };

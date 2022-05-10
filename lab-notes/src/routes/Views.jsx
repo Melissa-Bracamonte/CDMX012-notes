@@ -3,31 +3,31 @@ import Login from "../components/Login";
 import SignUp from "../components/SignUp";
 import Notes from "../components/Notes";
 import NotFound from "../components/NotFound";
-// import { ProtectedRoute } from './components/ProtectedRoute'
 import {
     Routes, Route
 } from "react-router-dom";
-import RequireAuth from '../components/RequireAuth';
-// import { UserContext } from '../database/UserProvider';
+//import RequireAuth from '../components/RequireAuth';
+// import { UserContext } from "../database/UserProvider";
+//import { Navigate } from "react-router-dom";
+// import { auth } from "../database/firebase-config";
+import { useNavigate } from 'react-router-dom';
 
 const Views = () => {
-    // const {user} = useContext(UserContext)
-    // if (user === false){
-    //     return <p>Loading...</p>
-    // }
-
-    // const { user } = useContext(UserContext);
+    // const {user} = useContext(UserContext);
+    const navigate = useNavigate();
 
     return (
         <Routes>
                 <Route exact path='/' element={<Login />}/>
                 <Route exact path='/signup' element={<SignUp />}/>
+{window.user &&(
                 <Route exact path='/notes' element={
-                    <RequireAuth>
-                        <Notes/>
-                        {/* <Notes emailUser={user}/> */}
-                    </RequireAuth>
+                    // window.user ? <Notes/> : navigate('/')
+                    // <RequireAuth>
+                    <Notes/>
+                    // </RequireAuth>
                 }/>
+)}
                 <Route path='*' element={<NotFound />}/>
         </Routes>
     )

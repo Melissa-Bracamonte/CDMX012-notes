@@ -8,6 +8,7 @@ header{
     display: flex;
     flex-direction: row;
     margin-top: 10%;
+    /* width: 40%; */
 }
 
 /* body{
@@ -18,7 +19,7 @@ header{
 #identity{
     display: flex;
     flex-direction: row;
-    margin-right: 50%;
+    margin-left: -30%;
 }
 
 #logoHome{
@@ -60,6 +61,8 @@ header{
 #buttonLogOut{
     background: none;
     border: none;
+    margin-left: 70%;
+    /* margin-top: -80%; */
     /* width: 50%;
     height: 20px; */
 }
@@ -67,4 +70,5 @@ header{
 #btnLogout{
     width: -10%;
     height: 50px;
+    /* margin-top: -100%; */
 }

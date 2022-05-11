@@ -6,15 +6,15 @@ import NotFound from "../components/NotFound";
 import {
     Routes, Route
 } from "react-router-dom";
-import RequireAuth from '../components/RequireAuth';
+// import RequireAuth from '../components/RequireAuth';
 import { UserContext } from "../database/UserProvider";
 //import { Navigate } from "react-router-dom";
 // import { auth } from "../database/firebase-config";
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 const Views = () => {
     const {user} = useContext(UserContext);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     return (
         <Routes>

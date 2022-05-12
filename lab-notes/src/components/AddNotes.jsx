@@ -24,6 +24,8 @@ const AddNotes = () => {
   const [editNotes, setEditNotes] = useState(false);
   const [id, setId] = useState("");
   const [modal, setModal] = useState(false);
+  const [modalDelete, setModalDelete] = useState(false);
+  const [idDeletedNote, setIdDeletedNote] = useState("");
   const { user } = useContext(UserContext);
 
   useEffect(() => {
@@ -32,15 +34,14 @@ const AddNotes = () => {
         const q = query(collection(db, "notes"), where("uid", "==", user.uid));
         onSnapshot(q, (querySnapshot) => {
           let arrayData = [];
-          querySnapshot.docs.map((doc) => { 
+          querySnapshot.docs.map((doc) => {
             arrayData.push({
               id: doc.id,
               ...doc.data(),
-              date : new Date(doc.data().date.seconds*1000)
+              date: new Date(doc.data().date.seconds * 1000),
             });
           });
-          arrayData.sort((a, b) => (b.date) - (a.date));
-          console.log(arrayData)
+          arrayData.sort((a, b) => b.date - a.date);
           setNotes(arrayData);
         });
       } catch (error) {
@@ -65,7 +66,9 @@ const AddNotes = () => {
         date: new Date(),
         uid: uid,
       });
-      // setNotes([...notes, { ...newNote, uid, title, id: data.id,   }]);
+      setModal(!modal);
+      setTitle("");
+      setNewNote("");
     } catch (error) {
       console.log(error);
     }
@@ -79,10 +82,10 @@ const AddNotes = () => {
       await deleteDoc(doc(db, "notes", id));
       const arrayFilter = notes.filter((item) => item.id !== id);
       setNotes(arrayFilter);
-      alert("nota borrada");
     } catch (error) {
       console.log(error);
     }
+    toggleModalDelete();
   };
 
   const activateEditing = (item) => {
@@ -120,6 +123,7 @@ const AddNotes = () => {
       setNewNote("");
       setTitle("");
       setId("");
+      setModal(!modal);
     } catch (error) {
       console.log(error);
     }
@@ -129,14 +133,25 @@ const AddNotes = () => {
     setModal(!modal);
   };
 
-  // const closeModal = () => {
-  //   setModal(modal);
-  // };
+  const toggleModalDelete = () => {
+    setModalDelete(!modalDelete);
+  };
+
+  const deleteNote = (id) => {
+    setIdDeletedNote(id);
+    toggleModalDelete();
+  };
 
   if (modal) {
     document.body.classList.add("active-modal");
   } else {
     document.body.classList.remove("active-modal");
+  }
+
+  if (modalDelete) {
+    document.body.classList.add("active-modal-delete");
+  } else {
+    document.body.classList.remove("active-modal-delete");
   }
 
   return (
@@ -153,9 +168,14 @@ const AddNotes = () => {
         <section className="modal">
           <section className="overlay"></section>
           <section className="modal-content">
-            <h2 className="editOrAdd">{editNotes ? "Edit note" : "Add note"}</h2>
-
-            <form className="modalElements" onSubmit={editNotes ? edit : addReminder}>
+            <h2 className="editOrAdd">
+              {editNotes ? "Edit note" : "Add note"}
+            </h2>
+            <form
+              id="modalForm"
+              className="modalElements"
+              onSubmit={editNotes ? edit : addReminder}
+            >
               <button className="close-modal" onClick={toggleModal}>
                 <img className="btnclose" src={close}></img>
               </button>
@@ -188,11 +208,31 @@ const AddNotes = () => {
               <section id="btnDeleteAndEdit">
                 <button
                   className="deleteAndEdit"
-                  onClick={() => remove(item.id)}
+                  onClick={() => deleteNote(item.id)}
                 >
                   <img className="imgDelete" src={deleteImg}></img>
                 </button>
-
+                {modalDelete && (
+                  <section className="modalDelete">
+                    <section className="overlayDelete"></section>
+                    <section className="modal-content-delete">
+                      <h2 className="deleteOrCancel">Are you sure?</h2>
+                      <button
+                        className="deleteYes"
+                        onClick={() => remove(idDeletedNote)}
+                      >
+                        Delete
+                      </button>
+                      <button
+                        type="submit"
+                        className="cancel"
+                        onClick={toggleModalDelete}
+                      >
+                        Cancel
+                      </button>
+                    </section>
+                  </section>
+                )}
                 {!modal && (
                   <form onSubmit={toggleModal}>
                     <button
@@ -204,7 +244,6 @@ const AddNotes = () => {
                   </form>
                 )}
               </section>
-
               <h3>{item.Titulo}</h3>
               <p id="h3Note">{item.Descripción}</p>
             </li>

@@ -63,6 +63,7 @@ header{
     background: none;
     border: none;
     margin-left: 70%;
+    cursor: pointer;
     /* margin-top: -80%; */
     /* width: 50%;
     height: 20px; */
@@ -73,4 +74,12 @@ header{
     height: 50px;
     margin-left: 140%;
     /* margin-top: -100%; */
+}
+
+#yourNotesAndName{
+    /* display: flex; */
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+    margin-top: 3%;
 }

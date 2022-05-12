@@ -8,7 +8,7 @@ import AddNotes from './AddNotes'
 
 function Notes(){
     // const { user, logOut } = useContext(UserContext);
-    const { logOut } = useContext(UserContext);
+    const { logOut, user } = useContext(UserContext);
     const navigate = useNavigate();
 
     const handleClickLogout = async() => {
@@ -39,6 +39,7 @@ function Notes(){
             <img id='btnLogout' src={logout}></img>
           </button>
           </header>
+          <h2 id='yourNotesAndName'> {'\n'} Your notes {user.displayName} </h2>
           <AddNotes/>
         </React.Fragment>
     );

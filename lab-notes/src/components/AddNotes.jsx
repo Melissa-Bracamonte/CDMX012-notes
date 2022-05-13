@@ -14,6 +14,7 @@ import add from "../assests/img/add.png";
 import close from "../assests/img/close.png";
 import editImg from "../assests/img/editImg.png";
 import deleteImg from "../assests/img/deleteImg.png";
+import women from "../assests/img/women.png";
 import "./AddNotes.css";
 import { UserContext } from "../database/UserProvider";
 
@@ -156,12 +157,39 @@ const AddNotes = () => {
 
   return (
     <React.Fragment>
-      {!modal && (
+      {/* {!modal && (
         <form onSubmit={editNotes ? edit : addReminder}>
-          <button id="btnAddNote" onClick={toggleModal}>
-            <img id="btnAdd" src={add}></img>
+          <button className="btnAddNote" onClick={toggleModal}>
+            <img className="btnAdd" src={add}></img>
           </button>
         </form>
+      )} */}
+
+      {notes.length >= 1 && (
+        <form onSubmit={editNotes ? edit : addReminder}>
+          <button className="btnAddNote" onClick={toggleModal}>
+            <img className="btnAdd" src={add}></img>
+          </button>
+        </form>
+      )}
+
+      {notes.length < 1 && (
+        <section id="beforeNotes">
+          <img className="imgWomen" src={women}></img>
+          <p className="welcome">
+            Los post-it son el lugar en el que guardas tus notas, ahí puedes
+            escribir recordatorios, tus tareas del día y cualquier cosa que sea
+            importante para ti.
+          </p>
+          <p className="welcome">
+            ¡No te preocupes, nosotres guardamos tus notas!
+          </p>
+          <form onSubmit={addReminder}>
+            <button id="btnFirstNote" onClick={toggleModal}>
+              Create your first note
+            </button>
+          </form>
+        </section>
       )}
 
       {modal && (
@@ -216,20 +244,24 @@ const AddNotes = () => {
                   <section className="modalDelete">
                     <section className="overlayDelete"></section>
                     <section className="modal-content-delete">
-                      <h2 className="deleteOrCancel">Are you sure?</h2>
-                      <button
-                        className="deleteYes"
-                        onClick={() => remove(idDeletedNote)}
-                      >
-                        Delete
-                      </button>
-                      <button
-                        type="submit"
-                        className="cancel"
-                        onClick={toggleModalDelete}
-                      >
-                        Cancel
-                      </button>
+                      <h2 className="deleteOrCancel">
+                        Are you sure you want to delete this note?
+                      </h2>
+                      <section className="deleteAndCancel">
+                        <button
+                          className="deleteYes"
+                          onClick={() => remove(idDeletedNote)}
+                        >
+                          Delete
+                        </button>
+                        <button
+                          type="submit"
+                          className="cancel"
+                          onClick={toggleModalDelete}
+                        >
+                          Cancel
+                        </button>
+                      </section>
                     </section>
                   </section>
                 )}

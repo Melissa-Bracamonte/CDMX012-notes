@@ -1,5 +1,6 @@
 import React from "react";
 import Views from "../routes/Views";
+import "./App.css";
 
 function App() {
   return (

@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/CDMX012-notes/static/css/main.b33a445e.css",
+    "main.js": "/CDMX012-notes/static/js/main.1ad0b02c.js",
+    "static/media/fondo.jpg": "/CDMX012-notes/static/media/fondo.af415ab19705b3ede7d5.jpg",
+    "static/media/women.png": "/CDMX012-notes/static/media/women.a4ebc74d4d7031ac88f8.png",
+    "static/media/logo.png": "/CDMX012-notes/static/media/logo.f6ccbb0d143016b6c218.png",
+    "static/media/postit4.png": "/CDMX012-notes/static/media/postit4.6d4b7a3765ebcbf33ab7.png",
+    "static/media/postit6.png": "/CDMX012-notes/static/media/postit6.d5ef6ab5d8b99936252b.png",
+    "index.html": "/CDMX012-notes/index.html",
+    "main.b33a445e.css.map": "/CDMX012-notes/static/css/main.b33a445e.css.map",
+    "main.1ad0b02c.js.map": "/CDMX012-notes/static/js/main.1ad0b02c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b33a445e.css",
+    "static/js/main.1ad0b02c.js"
+  ]
+}

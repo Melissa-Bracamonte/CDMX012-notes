@@ -177,13 +177,10 @@ const AddNotes = () => {
         <section id="beforeNotes">
           <img className="imgWomen" src={women}></img>
           <p className="welcome">
-            Los post-it son el lugar en el que guardas tus notas, ahí puedes
-            escribir recordatorios, tus tareas del día y cualquier cosa que sea
-            importante para ti.
+            Post-it are the place where you keep your notes, there you can write
+            reminders, tasks of the day and anything that's important for you.
           </p>
-          <p className="welcome">
-            ¡No te preocupes, nosotres guardamos tus notas!
-          </p>
+          <p className="welcome">Don't worry, we'll keep your notes!</p>
           <form onSubmit={addReminder}>
             <button id="btnFirstNote" onClick={toggleModal}>
               Create your first note
@@ -214,13 +211,13 @@ const AddNotes = () => {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
               />
-              <input
+              <textarea
                 type="text"
                 className="inputNote"
                 placeholder="Create a note here..."
                 value={newNote}
                 onChange={(e) => setNewNote(e.target.value)}
-              />
+              ></textarea>
               <button type="submit" className="btnEditOrAdd">
                 {editNotes ? "Edit note" : "Add note"}
               </button>
@@ -277,7 +274,8 @@ const AddNotes = () => {
                 )}
               </section>
               <h3>{item.Titulo}</h3>
-              <p id="h3Note">{item.Descripción}</p>
+              {/* <p id="h3Note">{item.Descripción}</p> */}
+              <textarea id="h3Note" value={item.Descripción} disabled></textarea>
             </li>
           ))}
         </ul>

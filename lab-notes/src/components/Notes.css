@@ -1,3 +1,5 @@
+/* VISTA TABLET */
+@media only screen and (max-width: 1055px) and (min-width: 708px) {
 * {
     margin: 0px;
     padding: 0px;
@@ -7,6 +9,7 @@
 header{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     /* margin-top: 10%; */
     margin: 10% 0 0 10%;
     /* position: fixed; */
@@ -21,7 +24,8 @@ header{
 #identity{
     display: flex;
     flex-direction: row;
-    margin-left: -30%;
+    /* margin-left: -30%; */
+    margin-left: -27%;
 }
 
 #logoHome{
@@ -63,7 +67,7 @@ header{
 #buttonLogOut{
     background: none;
     border: none;
-    margin-left: 70%;
+    margin-left: 50%;
     cursor: pointer;
     /* margin-top: -80%; */
     /* width: 50%;
@@ -73,7 +77,7 @@ header{
 #btnLogout{
     width: -10%;
     height: 50px;
-    margin-left: 140%;
+    margin-left: 80%;
     /* margin-top: -100%; */
 }
 
@@ -83,4 +87,177 @@ header{
     font-style: italic;
     font-weight: bold;
     margin-top: 3%;
+}
+}
+
+/* VISTA MÓVIL */
+@media screen and (max-width: 707px) {
+    * {
+        margin: 0px;
+        padding: 0px;
+        font-family: "Roboto", sans-serif;
+    }
+    
+    header{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        /* margin-top: 10%; */
+        margin: 10% 0 0 10%;
+        /* position: fixed; */
+        /* width: 40%; */
+    }
+    
+    /* body{
+        margin: 0px;
+        padding: 0px;
+    } */
+    
+    #identity{
+        display: flex;
+        flex-direction: row;
+        /* margin-left: -30%; */
+        margin-left: -11%;
+    }
+    
+    #logoHome{
+        width: 45%;
+        height: 85px;
+    }
+    
+    #nameAndSloganHome{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    #yourNotesHome{
+        font-weight: bold; 
+        font-style: italic;
+        font-size: 150%;
+        margin-right: 5%;
+    }
+    
+    #sloganHome{
+        /* display: flex; */
+        flex-direction: column;
+        font-weight: bold; 
+        font-style: italic;
+        font-size: 100%;
+        color: rgba(0, 0, 0, 0.734);
+      }
+      
+      #sloganPartOneHome{
+        text-overflow: ellipsis;
+      white-space: nowrap;
+      }
+      
+      #sloganPartTwoHome{
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    
+    #buttonLogOut{
+        background: none;
+        border: none;
+        margin-left: 50%;
+        cursor: pointer;
+        /* margin-top: -80%; */
+        /* width: 50%;
+        height: 20px; */
+    }
+    
+    #btnLogout{
+        width: -10%;
+        height: 50px;
+        margin-left: 60%;
+        /* margin-top: -100%; */
+    }
+    
+    #yourNotesAndName{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        font-style: italic;
+        font-weight: bold;
+        margin-top: 3%;
+        margin-left: 30%;
+        white-space: nowrap;
+    }
+}
+
+/* VISTA DESKTOP */
+@media only screen and (max-width: 5000px) and (min-width: 1056px) {
+    * {
+        margin: 0px;
+        padding: 0px;
+        font-family: "Roboto", sans-serif;
+    }
+    
+    header{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 5% 0 0 0;
+        width: 100%;
+    }
+    
+    #identity{
+        display: flex;
+        flex-direction: row;
+        margin-left: -12%;
+    }
+    
+    #logoHome{
+        width: 45%;
+        height: 85px;
+    }
+    
+    #nameAndSloganHome{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    #yourNotesHome{
+        font-weight: bold; 
+        font-style: italic;
+        font-size: 150%;
+        /* margin-right: 5%; */
+    }
+    
+    #sloganHome{
+        flex-direction: column;
+        font-weight: bold; 
+        font-style: italic;
+        font-size: 100%;
+        color: rgba(0, 0, 0, 0.734);
+      }
+      
+      #sloganPartOneHome{
+        text-overflow: ellipsis;
+      white-space: nowrap;
+      }
+      
+      #sloganPartTwoHome{
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    
+    #buttonLogOut{
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+    
+    #btnLogout{
+        width: -10%;
+        height: 50px;
+        margin-left: 230%;
+    }
+    
+    #yourNotesAndName{
+        text-align: center;
+        font-style: italic;
+        font-weight: bold;
+        margin-top: 1%;
+    }
 }

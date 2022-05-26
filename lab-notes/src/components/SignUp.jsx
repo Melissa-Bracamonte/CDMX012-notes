@@ -44,6 +44,7 @@ function SignUp (){
           {/* <h2>{
             user ? 'en línea' : 'offline'
 }</h2> */}
+{/* <section id='containerSignup'> */}
         <h1 id='yourNotes'><img id='logo' src={logo}></img> {'\n'} Your notes</h1>
         <div id='slogan'>
         <p id='sloganPartOne'>If it's important for you,</p>
@@ -75,6 +76,7 @@ function SignUp (){
         <p id='loginHereOne'>Already have an account?</p>
         <p id='loginHereTwo' onClick={navigateToLogin}>Login here</p>
         </div>
+        {/* </section> */}
       </React.Fragment>
     );
 }

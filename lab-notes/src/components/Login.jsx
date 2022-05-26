@@ -40,7 +40,7 @@ function Login(){
 
     return(
 <React.Fragment>
-        <h1 id='yourNotes'><img id='logo' src={logo}></img> {'\n'} Your notes</h1>
+        <h1 id='yourNotesLogin'><img id='logoLogin' src={logo}></img> {'\n'} Your notes</h1>
         <div id='slogan'>
         <p id='sloganPartOne'>If it's important for you,</p>
         <p id='sloganPartTwo'>it should be written on a post-it</p>

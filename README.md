@@ -82,8 +82,8 @@ Lo que debe ocurrir para que se satisfagan las necesidades del usuario
 
 Lo acordado que debe ocurrir para decir que la historia está terminada.
 
-* Debes haber recibido _code review_.
-* Haces _test_ unitarios y, además, has testeado tu producto manualmente.
+* Haber recibido _code review_.
+* Haber testeado el producto manualmente.
 
 ## 4. Vista final
 
@@ -94,3 +94,5 @@ Todo lo anterior dio como resultado esta interfaz:
 ![Vista-signup](https://raw.githubusercontent.com/Melissa-Bracamonte/CDMX012-notes/main/lab-notes/src/assests/img/vista-signup.png)
 
 ![Vista-welcome](https://raw.githubusercontent.com/Melissa-Bracamonte/CDMX012-notes/main/lab-notes/src/assests/img/vista-welcome.png)
+
+![Vista-notas](https://raw.githubusercontent.com/Melissa-Bracamonte/CDMX012-notes/f6a40d0c59a209926b7180516f4700559c40a8d1/lab-notes/src/assests/img/Vista%20notas.png)

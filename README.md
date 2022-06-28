@@ -19,13 +19,13 @@ En este proyecyo se construyó una aplicación para tomar notas, que permite cre
 
 Este proyecto fue pensado para ayudar al usuario a guardar sus recordatorios más importantes en una aplicación sencilla y de facil uso en su celular, antes de empezar a programar la aplición en el código, se realizaron prototipos en Figma que fueron iterados con el usuario hasta llegar a este resultado final: 
 
-![Protoitipo-login]()
+![Protoitipo-login](https://raw.githubusercontent.com/Melissa-Bracamonte/CDMX012-notes/main/lab-notes/src/assests/img/prototipo-tabletLogin.png)
 
-![Protoitipo-signup]()
+![Protoitipo-signup](https://raw.githubusercontent.com/Melissa-Bracamonte/CDMX012-notes/main/lab-notes/src/assests/img/prototipo-tabletSignup.png)
 
-![Protoitipo-welcome]()
+![Protoitipo-welcome](https://raw.githubusercontent.com/Melissa-Bracamonte/CDMX012-notes/main/lab-notes/src/assests/img/prototipo-tabletWelcome.png)
 
-![Protoitipo-home]()
+![Protoitipo-home](https://raw.githubusercontent.com/Melissa-Bracamonte/CDMX012-notes/main/lab-notes/src/assests/img/prototipo-tabletHome.png)
 
 ## 3. Historias de usuario
 
@@ -87,14 +87,10 @@ Lo acordado que debe ocurrir para decir que la historia está terminada.
 
 ## 4. Vista final
 
-Todo lo anterior dio como resultado la interfaz en desktop, tablet y en móbil, a continuación algunas imágenes:
+Todo lo anterior dio como resultado esta interfaz: 
 
-![vista-login]()
+![Vista-login](https://raw.githubusercontent.com/Melissa-Bracamonte/CDMX012-notes/main/lab-notes/src/assests/img/vista-login.png)
 
-![vista-signup]()
+![Vista-signup](https://raw.githubusercontent.com/Melissa-Bracamonte/CDMX012-notes/main/lab-notes/src/assests/img/vista-signup.png)
 
-![vista-welcome]()
-
-![vista-home]()
-
-
+![Vista-welcome](https://raw.githubusercontent.com/Melissa-Bracamonte/CDMX012-notes/main/lab-notes/src/assests/img/vista-welcome.png)
